@@ -91,7 +91,7 @@ include(compile_proto.cmake)
 compile_proto()
 
 # initialize the Raspberry Pi Pico SDK
-pico_sdk_init()
+pico_sdk_init(C:\pico-sdk)
 
 # Remove unused code and data
 add_compile_options(-fdata-sections -ffunction-sections)

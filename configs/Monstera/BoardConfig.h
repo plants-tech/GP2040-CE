@@ -3,8 +3,8 @@
  * SPDX-FileCopyrightText: Copyright (c) 2021 Jason Skuby (mytechtoybox.com)
  */
 
-#ifndef MONSTERA_V13_CONFIG_H_
-#define MONSTERA_V13_CONFIG_H_
+#ifndef MONSTERA_CONFIG_H_
+#define MONSTERA_CONFIG_H_
 
 #include "enums.pb.h"
 
@@ -104,9 +104,14 @@
 // Unless you are planning on running custom animations I would recommmend you leave this as is.
 
 #define TURBO_LED_PIN -1
-#define BOARD_LEDS_PIN -1
 #define REVERSE_LED_PIN -1
 
+#define BOARD_LEDS_PIN 9
+
+#define LED_BRIGHTNESS_MAXIMUM 255
+#define LED_BRIGHTNESS_STEPS 10
+#define LED_FORMAT LED_FORMAT_GRB
+#define LEDS_PER_PIXEL 1
 
 // This is the Player LED section.
 // In this section you can specify if Player LEDs will be active, and, if active, which pins will be used for them.
@@ -149,23 +154,6 @@
 // This can be changed to `1` to have the dispaly output flipped.
 // The default `DISPLAY_INVERY` is `0`.
 // This can be changed to `1` to have the color on the display inverted.
-
-#define HAS_I2C_DISPLAY 0
-
-
-// The default `SPLASH_MODE` is `NOSPLASH`.
-// There are four options for `SPLASH_MODE` currently:
-// 1 - `STATICSPLASH` - This will display the static splash image
-// 2 - `CLOSEIN` - This will display the static splash image as a top and bottom coming together animation
-// 3 - `CLOSEINCUSTOM` - This will display the custom splash image as a top and bottom coming together animation
-// 4 - `NOSPLASH` - This will not display a splash screen on boot
-// Special note - All of the splash screen images can be changed via `include/bitmaps.h`
-
-#define SPLASH_MODE SPLASH_MODE_NONE
-#define SPLASH_CHOICE SPLASH_CHOICE_MAIN
-#define SPLASH_DURATION 7500 // Duration in milliseconds
-
-
 // The default `BUTTON_LAYOUT` is `BUTTON_LAYOUT_STICK` which will show an arcade stick on the left hand side of the display.
 // There are seven options for `BUTTON_LAYOUT` currently:
 // 1 - BUTTON_LAYOUT_STICK - This is a basic joystick layout
@@ -188,14 +176,33 @@
 // 9 - BUTTON_LAYOUT_NOIR8 - This is the standard 8 button Noir layout
 // 10 - BUTTON_LAYOUT_KEYBOARDB - This is a WASD keyboard layout that is straight
 // 11 - BUTTON_LAYOUT_DANCEPADB - This is a dance pad layout (must be used with `BUTTON_LAYOUT_DANCEPADA` in `BUTTON_LAYOUT`)
+// The default `SPLASH_MODE` is `NOSPLASH`.
+// There are four options for `SPLASH_MODE` currently:
+// 1 - `STATICSPLASH` - This will display the static splash image
+// 2 - `CLOSEIN` - This will display the static splash image as a top and bottom coming together animation
+// 3 - `CLOSEINCUSTOM` - This will display the custom splash image as a top and bottom coming together animation
+// 4 - `NOSPLASH` - This will not display a splash screen on boot
+// Special note - All of the splash screen images can be changed via `include/bitmaps.h`
 
-#define BUTTON_LAYOUT BUTTON_LAYOUT_STICKLESS
-#define BUTTON_LAYOUT_RIGHT BUTTON_LAYOUT_STICKLESSB
+#define HAS_I2C_DISPLAY 1
+#define I2C_SDA_PIN 0
+#define I2C_SCL_PIN 1
+#define I2C_BLOCK i2c0
+#define I2C_SPEED 800000
+#define DISPLAY_FLIP 0
+#define DISPLAY_INVERT 0
 
 #define REVERSE_UP_DEFAULT 1
 #define REVERSE_DOWN_DEFAULT 1
 #define REVERSE_LEFT_DEFAULT 1
 #define REVERSE_RIGHT_DEFAULT 1
+
+#define BUTTON_LAYOUT BUTTON_LAYOUT_STICKLESS
+#define BUTTON_LAYOUT_RIGHT BUTTON_LAYOUT_STICKLESSB
+#define SPLASH_MODE SPLASH_MODE_STATICSPLASH
+#define SPLASH_CHOICE SPLASH_CHOICE_MAIN
+#define SPLASH_DURATION 7500 // Duration in milliseconds
+
 
 // Board LED Add-on Setting
 // BOARD_LED_OFF  - Turns the on-board LED off
